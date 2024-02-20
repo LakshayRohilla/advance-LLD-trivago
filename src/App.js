@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div style={{backgroundColor:'#F5F5F5'}}>
-        <Container >
+        <Container sx={{height: '390px'}}>
           <Header/>
           <HeaderBody/>
           <CompleteSeachBar/>
