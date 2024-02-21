@@ -19,6 +19,7 @@ export default function Location() {
   // const [cityInputValue, setCityInputValue] = useState("");
   useEffect(()=>{
     console.log(selectedCity);
+    // Now inside it we set a state for the state management.
   }, [selectedCity]);
   // console.log(selectedCity);
   
