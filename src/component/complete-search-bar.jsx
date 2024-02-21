@@ -7,6 +7,7 @@ import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
 import Location from "./location-component";
 import SearchButton from "./search-button";
 import CheckIn from "./searchbar-components/check-in";
+import CheckOut from "./searchbar-components/check-out";
 
 const Item = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,7 +38,7 @@ export default function CompleteSeachBar(){
                 {/* <Item>Check-In</Item> */}
                 </Grid>
                 <Grid xs={4} sm={4} md={2} sx={{borderRight:' 1.5px solid grey', borderRadius:0 }}>
-                <Item sx={{paddingTop: '0'}}>Check out</Item>
+                <Item sx={{paddingTop: '0'}}><CheckOut/></Item>
                 </Grid>
                 <Grid xs={3} sm={3} md={0.5} >
                 <Item><BedOutlinedIcon/></Item>
