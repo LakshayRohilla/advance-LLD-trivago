@@ -6,6 +6,7 @@ import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined
 import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
 import Location from "./location-component";
 import SearchButton from "./search-button";
+import CheckIn from "./searchbar-components/check-in";
 
 const Item = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,19 +25,21 @@ export default function CompleteSeachBar(){
                 <Grid xs={3} sm={3} md={0.5}>
                 <Item><SearchOutlinedIcon/></Item>
                 </Grid>
-                <Grid xs={9} sm={9} md={2.3}>
-                <Item><Location/></Item>
+                <Grid xs={9} sm={9} md={2.3} sx={{borderRight:' 1.5px solid grey', borderRadius:0 }}>
+                <Item ><Location/></Item>
                 </Grid>
                 <Grid xs={4} sm={4} md={0.5}>
-                <Item><CalendarMonthOutlinedIcon/></Item>
+                <Item ><CalendarMonthOutlinedIcon/></Item>
                 </Grid>
                 <Grid xs={4} sm={4} md={2}>
-                <Item>Check in</Item>
+                {/* <Item sx={{listStyle: 'none', display: 'inline-block', borderRight:' 2px solid grey', lineHeight: '2px', borderRadius:0 }}><CheckIn/></Item> */}
+                <Item sx={{borderImage: 'linear-gradient(transparent 10%, grey 10% 90%, transparent 90%) 0 1 0 0 / 1.5px', paddingTop: '0'}}><CheckIn/></Item>
+                {/* <Item>Check-In</Item> */}
                 </Grid>
-                <Grid xs={4} sm={4} md={2}>
-                <Item>Check out</Item>
+                <Grid xs={4} sm={4} md={2} sx={{borderRight:' 1.5px solid grey', borderRadius:0 }}>
+                <Item sx={{paddingTop: '0'}}>Check out</Item>
                 </Grid>
-                <Grid xs={3} sm={3} md={0.5}>
+                <Grid xs={3} sm={3} md={0.5} >
                 <Item><BedOutlinedIcon/></Item>
                 </Grid>
                 <Grid xs={9} sm={9} md={2.2}>
