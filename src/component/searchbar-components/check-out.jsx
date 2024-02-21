@@ -6,10 +6,10 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { useState, useEffect } from 'react';
 
 
-export default function CheckIn() {
+export default function CheckOut() {
   const [value, setValue] = useState(dayjs());
   useEffect(()=>{
-    console.log(`Check In Time : ${value.format('DD/MM/YYYY h:mm:ss A')}`);
+    console.log(`Check Out Time : ${value.format('DD/MM/YYYY h:mm:ss A')}`);
     // Now inside it we set a state for the state management.
   }, [value]);
 
@@ -21,7 +21,6 @@ export default function CheckIn() {
       padding: 0,
     },
   }
-
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} >
       <DemoContainer
@@ -34,7 +33,7 @@ export default function CheckIn() {
       >
         <DemoItem >
           <MobileDateTimePicker  
-          label="Check-In"
+          label="Check-Out"
           value={value}
           onChange={(newValue) => setValue(newValue)}
           slotProps={{ textField: { variant: 'standard', } }}
