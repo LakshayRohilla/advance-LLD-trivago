@@ -5,6 +5,7 @@ import CompleteSeachBar from './component/complete-search-bar';
 import { Container } from '@mui/material';
 import RestOfPage from './component/rest-of-page';
 import Companies from './component/companies';
+import DisplayEnteredData from './component/display-entered-data/displayEnteredData';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </Container>
       </div>
       <Container>
+      <DisplayEnteredData/>
         <RestOfPage/>
       </Container>
     </>

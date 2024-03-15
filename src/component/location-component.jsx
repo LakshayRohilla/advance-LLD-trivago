@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { useDispatch } from "react-redux";
+import { location } from '../store/searchSlice';
 
 export default function Location() {
-  
+  const dispatch = useDispatch();
   // const top100Films = [
   //   { title: 'Jaipur' },
   //   { title: 'Delhi' },
@@ -18,9 +20,14 @@ export default function Location() {
   const [selectedCity, setSelectedCity] = useState();
   // const [cityInputValue, setCityInputValue] = useState("");
   useEffect(()=>{
-    console.log(selectedCity);
+    if(selectedCity!==undefined){
+      console.log(selectedCity);
+      // In the dispatch we are having the reducer name.
+      dispatch(location(selectedCity))
+    }
+
     // Now inside it we set a state for the state management.
-  }, [selectedCity]);
+  }, [selectedCity, dispatch]);
   // console.log(selectedCity);
   
 
