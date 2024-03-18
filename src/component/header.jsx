@@ -27,37 +27,46 @@ export default function Header(){
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                sx={{ mr: 2 }}
+                
             >
                 <FavoriteBorderOutlinedIcon />
-            </IconButton>
+            </IconButton >
+            <Typography sx={{ mr: 5}}>
+                Favorites
+            </Typography>
             <IconButton
                 size="large"
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                sx={{ mr: 2 }}
             >
                 <LanguageOutlinedIcon />
             </IconButton>
+            <Typography sx={{ mr: 5}}>
+                EN - ₹
+            </Typography>
             <IconButton
                 size="large"
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                sx={{ mr: 2 }}
             >
                 <AccountCircleOutlinedIcon/>
             </IconButton>
+            <Typography sx={{ mr: 5}}>
+                Log in
+            </Typography>
             <IconButton
                 size="large"
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                sx={{ mr: 2 }}
             >
                 <MenuIcon />
             </IconButton>
+            <Typography sx={{ mr: 5}}>
+                Menu
+            </Typography>
             </Toolbar>
             <Divider/>
         </>
