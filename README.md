@@ -1,3 +1,10 @@
+# Problem Statement :
+![Problem Statement](src\asset\images\assignment\problem-statement.png)
+
+# Problem Statement UI :
+![Problem Statement UI](src\asset\images\assignment\problem-statement-UI.png)
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
