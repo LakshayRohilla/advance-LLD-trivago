@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 
-const InputField = function(){
+const InputField = function({data}){
     return (
         <Box
       component="form"
@@ -13,7 +13,7 @@ const InputField = function(){
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" variant="outlined" />
+      <TextField id="outlined-basic" variant="outlined" value={data}/>
     </Box>
     );
 }

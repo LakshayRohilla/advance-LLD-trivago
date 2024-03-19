@@ -1,10 +1,9 @@
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 import Box from "@mui/material/Box";
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import InputField from "./input-field";
+import { useEffect, useState } from "react";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,7 +16,7 @@ import InputField from "./input-field";
 //   color: theme.palette.text.secondary,
 // }));
 
-export default function GuestAndRoom() {
+export default function GuestAndRoom({provideData}) {
 
   const inputContainerStyle = {
     display: 'flex',
@@ -29,6 +28,44 @@ export default function GuestAndRoom() {
     color: 'black'
   }
 
+  const [adult, setAdult] = useState(0);
+  const [children, setChildren] = useState(0);
+  const [room, setRoom] = useState(0);
+  const adultButtonDisable = adult <= 0;
+  const childrenButtonDisable = children <= 0;
+  const roomButtonDisable = room <= 0;
+
+  // function onClickAdultHandler() {
+  //   setGuest(guest+1);
+  //   console.log(guest);
+  //   // dispatch this.
+  // }
+
+  // function onClickChildrenHandler() {
+  //   setChildren(children+1);
+  //   console.get(children);
+  //   // dispatch this.
+  // }
+
+  // function onClicRoomkHandler() {
+  //   setRoom(room+1);
+  //   console.log(room);
+  //   // dispatch this.
+  // }
+
+  function onClickAdd(stateUpdater, stateName){
+    stateUpdater(+stateName+1);
+  }
+  function onClickSub(stateUpdater, stateName){
+    if(stateName>0) stateUpdater(stateName-1);
+  }
+
+  useEffect(() => {
+      provideData(adult, children, room);
+  },[adult, children, room]);
+
+  
+
   return (
     <Box sx={{ flexGrow: 1}}>
     <Grid container spacing={4} alignItems="center">
@@ -36,13 +73,13 @@ export default function GuestAndRoom() {
         <p style={{...boldLable}}>Adults</p>
       </Grid>
       <Grid item xs={2} md={2}>
-        <RemoveCircleOutlineOutlinedIcon color="primary" />
+        <RemoveCircleOutlineOutlinedIcon color={!adultButtonDisable ? "primary" : "disabled"} onClick={() => onClickSub(setAdult, adult)}/>
       </Grid>
       <Grid item xs={2} md={2} sx={inputContainerStyle}>
-        <InputField />
+        <InputField data={adult}/>
       </Grid>
       <Grid item xs={2} md={2}>
-        <ControlPointOutlinedIcon color="primary" />
+        <ControlPointOutlinedIcon color="primary" onClick={() => onClickAdd(setAdult, adult)}/>
       </Grid>
     </Grid>
     <Grid container spacing={4} alignItems="center">
@@ -50,13 +87,13 @@ export default function GuestAndRoom() {
       <p style={{...boldLable}}>Children</p>
       </Grid>
       <Grid item xs={2} md={2}>
-        <RemoveCircleOutlineOutlinedIcon color="primary" />
+        <RemoveCircleOutlineOutlinedIcon color={!childrenButtonDisable ? "primary" : "disabled"} onClick={() => onClickSub(setChildren, children)}/>
       </Grid>
       <Grid item xs={2} md={2} sx={inputContainerStyle}>
-        <InputField/>
+        <InputField data={children}/>
       </Grid>
       <Grid item xs={2} md={2}>
-        <ControlPointOutlinedIcon color="primary" />
+        <ControlPointOutlinedIcon color="primary" onClick={() => onClickAdd(setChildren, children)}/>
       </Grid>
     </Grid>
     <Grid container spacing={4} alignItems="center">
@@ -64,13 +101,13 @@ export default function GuestAndRoom() {
       <p style={{...boldLable}}>Rooms</p>
       </Grid>
       <Grid item xs={2} md={2}>
-        <RemoveCircleOutlineOutlinedIcon color="primary" />
+        <RemoveCircleOutlineOutlinedIcon color={!roomButtonDisable ? "primary" : "disabled"} onClick={() => onClickSub(setRoom, room)}/>
       </Grid>
       <Grid item xs={2} md={2} sx={inputContainerStyle}>
-        <InputField/>
+        <InputField data={room}/>
       </Grid>
       <Grid item xs={2} md={2}>
-        <ControlPointOutlinedIcon color="primary" />
+        <ControlPointOutlinedIcon color="primary" onClick={() => onClickAdd(setRoom, room)}/>
       </Grid>
     </Grid>
     

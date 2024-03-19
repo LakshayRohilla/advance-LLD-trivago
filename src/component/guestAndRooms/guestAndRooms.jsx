@@ -12,10 +12,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Typography } from "@mui/material";
 import GuestAndRoom from './guest-and-rooms-selection';
 import Divider from '@mui/material/Divider';
+import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { guestAndRoom } from '../../store/searchSlice';
 
 const GuestAndRooms = function(){
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [adult, setAdult] = useState();
+    const [children, setChildren] = useState();
+    const [room, setRoom] = useState();
   const theme = useTheme();
   // const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -25,6 +31,21 @@ const GuestAndRooms = function(){
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const allData = (adult, children, room) => {
+    setAdult(adult);
+    setChildren(children);
+    setRoom(room);
+  }
+  const dispatch = useDispatch();
+  const onApplyClickHandler = () => {
+    dispatch(guestAndRoom({'adult': adult, 'children': children, 'room': room}));
+  }
+  const data = useSelector((state) => state.search.guestAndRoom);
+  const handleApply = () => {
+    handleClose(); // Call handleClose function
+    onApplyClickHandler(); // Call additional function
   };
 
 //   const InputCSS = {
@@ -37,7 +58,8 @@ const GuestAndRooms = function(){
         ## Guest and ## Rooms
       </Button> */}
       <Typography onClick={handleClickOpen} style={{cursor: 'pointer'}}>
-                {'Guests And Rooms'}
+        {data.adult && data.room ? `${data.adult} Guests & ${data.room} Rooms` : 'Guests And Rooms'}
+                
             </Typography>
       <Dialog
         // fullScreen={fullScreen}
@@ -63,11 +85,11 @@ const GuestAndRooms = function(){
         <Divider variant='middle'/>
         <DialogContent>
           <DialogContentText>
-            <GuestAndRoom/>
+            <GuestAndRoom provideData={allData}/>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button autoFocus onClick={handleApply}>
             Apply
           </Button>
         </DialogActions>
