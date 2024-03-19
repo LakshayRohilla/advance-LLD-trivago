@@ -5,7 +5,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -22,8 +21,6 @@ const GuestAndRooms = function(){
     const [adult, setAdult] = useState();
     const [children, setChildren] = useState();
     const [room, setRoom] = useState();
-  const theme = useTheme();
-  // const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -62,7 +59,6 @@ const GuestAndRooms = function(){
                 
             </Typography>
       <Dialog
-        // fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
