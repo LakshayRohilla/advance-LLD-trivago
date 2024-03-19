@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 //   input: [],
 // };
 const initialState = {
-  selectedLocation: undefined, buttonClick: undefined, checkInTime: undefined, checkOutTime: undefined
+  selectedLocation: undefined, buttonClick: undefined, checkInTime: undefined, checkOutTime: undefined,
+   guestAndRoom : {adult: undefined,children: undefined, room: undefined}
 };
 
 const searchSlice = createSlice({
@@ -28,10 +29,13 @@ const searchSlice = createSlice({
     },
     checkOutTime: (state, action) => {
       state.checkOutTime= action.payload;
+    },
+    guestAndRoom: (state, action) => {
+      state.guestAndRoom= action.payload;
     }
     }
 });
 //keep adding the reducers' names to make them available globally
-export const { location, searchButton, checkInTime, checkOutTime } = searchSlice.actions;
+export const { location, searchButton, checkInTime, checkOutTime, guestAndRoom } = searchSlice.actions;
 
 export default searchSlice.reducer;

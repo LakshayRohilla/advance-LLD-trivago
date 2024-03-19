@@ -9,9 +9,12 @@ import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useSelector } from 'react-redux';
 import { Container } from '@mui/material';
+import SingleBedIcon from '@mui/icons-material/SingleBed';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function DisplayEnteredData() {
     const data = useSelector((state) => state.search);
+    const {adult, children, room} = data.guestAndRoom;
     if(data?.buttonClick == 'true' && data.selectedLocation !== undefined) {
         return (
             <Container sx={{display: 'flex', justifyContent: 'center', mt: 7}}>
@@ -27,7 +30,7 @@ export default function DisplayEnteredData() {
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <WorkIcon />
+                        <BeachAccessIcon />
                     </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary="Check In Time :" secondary={data.checkInTime} />
@@ -35,10 +38,18 @@ export default function DisplayEnteredData() {
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <BeachAccessIcon />
+                        <CalendarMonthIcon />
                     </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary="Check Out Time :" secondary={data.checkOutTime} />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                    <Avatar>
+                        <SingleBedIcon />
+                    </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Check Out Time :" secondary={`${adult} Adult , ${children} Children, ${room} Room`} />
                 </ListItem>
                 </List>
             </Container>
