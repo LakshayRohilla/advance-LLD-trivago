@@ -8,6 +8,7 @@ import Location from "./location-component";
 import SearchButton from "./search-button";
 import CheckIn from "./searchbar-components/check-in";
 import CheckOut from "./searchbar-components/check-out";
+import GuestAndRooms from "./guestAndRooms/guestAndRooms";
 
 const Item = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -44,7 +45,7 @@ export default function CompleteSeachBar(){
                 <Item><BedOutlinedIcon/></Item>
                 </Grid>
                 <Grid xs={9} sm={9} md={2.2}>
-                <Item>Guests and Rooms</Item>
+                <Item><GuestAndRooms/></Item>
                 </Grid>
                 <Grid xs={12} sm={12} md={2}>
                 <Item sx={{pt:0.5, pb:0.5}}><SearchButton/></Item>
