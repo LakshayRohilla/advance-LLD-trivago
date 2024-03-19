@@ -28,12 +28,14 @@ export default function GuestAndRoom({provideData}) {
     color: 'black'
   }
 
-  const [adult, setAdult] = useState(0);
+  const [adult, setAdult] = useState(2);
   const [children, setChildren] = useState(0);
-  const [room, setRoom] = useState(0);
+  const [room, setRoom] = useState(1);
   const adultButtonDisable = adult <= 0;
   const childrenButtonDisable = children <= 0;
-  const roomButtonDisable = room <= 0;
+  const roomButtonDisable = room == 1;
+  const adultButtonDisablePerRoom = room*2 == adult; 
+
 
   // function onClickAdultHandler() {
   //   setGuest(guest+1);
@@ -52,12 +54,24 @@ export default function GuestAndRoom({provideData}) {
   //   console.log(room);
   //   // dispatch this.
   // }
-
+  
   function onClickAdd(stateUpdater, stateName){
     stateUpdater(+stateName+1);
+    if(adultButtonDisablePerRoom) setAdult(adult);
   }
+
+  const onClickIfAddButtonDisable = () => {
+    if(adultButtonDisablePerRoom) alert('One room can have only 2 people !!!');
+  }
+
+  const handleApply = () => {
+    onClickIfAddButtonDisable(); 
+    onClickAdd(setAdult, adult); 
+  };
+
   function onClickSub(stateUpdater, stateName){
-    if(stateName>0) stateUpdater(stateName-1);
+    if(stateName==room && stateName>1) stateUpdater(stateName-1);
+    else if(stateName!==room && stateName!==room && stateName>0) stateUpdater(stateName-1);
   }
 
   useEffect(() => {
@@ -79,7 +93,7 @@ export default function GuestAndRoom({provideData}) {
         <InputField data={adult}/>
       </Grid>
       <Grid item xs={2} md={2}>
-        <ControlPointOutlinedIcon color="primary" onClick={() => onClickAdd(setAdult, adult)}/>
+        <ControlPointOutlinedIcon color={adultButtonDisablePerRoom ? "disabled" : "primary"} onClick={handleApply}/>
       </Grid>
     </Grid>
     <Grid container spacing={4} alignItems="center">
