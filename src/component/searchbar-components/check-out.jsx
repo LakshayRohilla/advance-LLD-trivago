@@ -11,10 +11,14 @@ import {checkOutTime} from '../../store/searchSlice';
 export default function CheckOut() {
   const dispatch = useDispatch();
   const [value, setValue] = useState(dayjs());
+  const currentDateCheck = value.isBefore(dayjs());
+  const oneYearAhead = dayjs().add(1, 'year');
   useEffect(()=>{
     console.log(`Check Out Time : ${value.format('DD/MM/YYYY h:mm:ss A')}`);
     // Now inside it we set a state for the state management.
-    dispatch(checkOutTime(value.format('DD/MM/YYYY h:mm:ss A')));
+    if(currentDateCheck) alert('Cant select date from past !!!!!');
+    else if(value.isAfter(oneYearAhead)) alert('Cannot select dates more than 1 year in advance');
+    else dispatch(checkOutTime(value.format('DD/MM/YYYY h:mm:ss A')));
   }, [value]);
 
   const InputCSS = {
